@@ -9,11 +9,8 @@
   justify-content: center;
   opacity: 1;
   transition: opacity 1s, visibility 1s;
-  &.hide-loader {
-    opacity: 0;
-    visibility: hidden;
-  }
 }
+
 .loader::after {
   content: "";
   width: 75px;
@@ -31,4 +28,10 @@
   to {
     transform: rotate(1turn);
   }
+}
+
+/* Add this class to hide the loader */
+.hide-loader {
+  opacity: 0;
+  visibility: hidden;
 }

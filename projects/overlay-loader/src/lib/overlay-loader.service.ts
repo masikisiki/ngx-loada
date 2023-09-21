@@ -7,31 +7,30 @@ import { LoaderComponent } from './loader.component';
   providedIn: 'root'
 })
 export class LoaderService {
-  overlayRef?: OverlayRef;
-  portal?: ComponentPortal<LoaderComponent>;
-  compRef?: ComponentRef<LoaderComponent>;
+  private overlayRef?: OverlayRef;
 
   constructor(private overlay: Overlay) { }
 
   public loading(): void {
-    this.portal = new ComponentPortal(LoaderComponent);
-    this.overlayRef = this.overlay.create({
-      positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
-      hasBackdrop: false
-    });
-    this.compRef = this.overlayRef.attach(this.portal);
+    if (!this.overlayRef) {
+      this.overlayRef = this.overlay.create({
+        positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
+        hasBackdrop: false
+      });
 
-    setTimeout(() => {
-      this.hideLoader()
-    }, 3000);
+      const spinnerPortal = new ComponentPortal(LoaderComponent);
+      this.overlayRef.attach(spinnerPortal);
+
+      setTimeout(() => {
+        this.hideLoader();
+      }, 25000);
+    }
   }
 
   public hideLoader(): void {
-    if (this.overlayRef && this.portal && this.compRef) {
-      this.compRef.instance.hideLoader = true;
-      setTimeout(() => {
-        this.overlayRef?.detach();
-      }, 1000);
+    if (this.overlayRef) {
+      this.overlayRef.detach();
+      this.overlayRef = undefined;
     }
   }
 }

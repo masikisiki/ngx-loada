@@ -1,12 +1,12 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
-    selector: 'app-loader',
-    template: `
-        <div class="loader"  [ngClass]="hideLoader ?  'hide-loader':''"></div>
-    `,
-    styleUrls: ['loader.component.scss']
+  selector: 'app-loader',
+  template: `
+    <div class="loader" [ngClass]="showLoader ? 'show-loader' : 'hide-loader'"> </div>
+  `,
+  styleUrls: ['loader.component.scss']
 })
 export class LoaderComponent {
-    hideLoader = false;
+  @Input() showLoader = true;
 }

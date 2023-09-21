@@ -1,10 +1,6 @@
 {
-  "name": "ng-loader",
-  "version": "0.0.1",
-  "peerDependencies": {
-    "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0"
-  },
+  "name": "ngx-loada",
+  "version": "0.0.16",
   "dependencies": {
     "tslib": "^2.3.0"
   }
