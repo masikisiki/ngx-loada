@@ -1,6 +1,6 @@
 {
   "name": "ngx-loada",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "dependencies": {
     "tslib": "^2.3.0"
   }

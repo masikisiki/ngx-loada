@@ -11,7 +11,7 @@ export class LoaderService {
 
   constructor(private overlay: Overlay) { }
 
-  public loading(): void {
+  public loading(timeout: number = 35000): void {
     if (!this.overlayRef) {
       this.overlayRef = this.overlay.create({
         positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
@@ -23,7 +23,7 @@ export class LoaderService {
 
       setTimeout(() => {
         this.hideLoader();
-      }, 25000);
+      }, timeout);
     }
   }
 
