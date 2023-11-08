@@ -1,7 +1,7 @@
-import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
-import { ComponentRef, Injectable } from '@angular/core';
-import { LoaderComponent } from './loader.component';
+import {Overlay, OverlayRef} from '@angular/cdk/overlay';
+import {ComponentPortal} from '@angular/cdk/portal';
+import {ComponentRef, Injectable} from '@angular/core';
+import {LoaderComponent} from './loader.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +9,10 @@ import { LoaderComponent } from './loader.component';
 export class LoaderService {
   private overlayRef?: OverlayRef;
 
-  constructor(private overlay: Overlay) { }
+  constructor(private overlay: Overlay) {
+  }
 
-  public loading(timeout: number = 59000 + 31000): void {
+  public loading(timeout: number = 60000 + 60000 + 60000 + 60000 + 60000 + 60000): void {
     if (!this.overlayRef) {
       this.overlayRef = this.overlay.create({
         positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
