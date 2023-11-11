@@ -2,11 +2,10 @@ import { Component, Input } from "@angular/core";
 
 @Component({
   selector: 'app-loader',
-  template: `
-    <div class="loader" [ngClass]="showLoader ? 'show-loader' : 'hide-loader'"> </div>
-  `,
+  templateUrl:'loader.component.html' ,
   styleUrls: ['loader.component.scss']
 })
 export class LoaderComponent {
   @Input() showLoader = true;
+  @Input() message: string| null = "Processing your request..."
 }

@@ -1,6 +1,6 @@
 import {Overlay, OverlayRef} from '@angular/cdk/overlay';
 import {ComponentPortal} from '@angular/cdk/portal';
-import {ComponentRef, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {LoaderComponent} from './loader.component';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class LoaderService {
   constructor(private overlay: Overlay) {
   }
 
-  public loading(timeout: number = 60000 + 60000 + 60000 + 60000 + 60000 + 60000): void {
+  public loading(timeout: number = 60000 + 60000 + 60000 + 60000 + 60000 + 60000, message = null): void {
     if (!this.overlayRef) {
       this.overlayRef = this.overlay.create({
         positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
@@ -20,7 +20,8 @@ export class LoaderService {
       });
 
       const spinnerPortal = new ComponentPortal(LoaderComponent);
-      this.overlayRef.attach(spinnerPortal);
+      const ref =this.overlayRef.attach(spinnerPortal);
+      ref.instance.message = message;
 
       setTimeout(() => {
         this.hideLoader();

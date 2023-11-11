@@ -1,0 +1,4 @@
+<div style="display: flex;flex-direction: column;">
+  <div class="loader" [ngClass]="showLoader ? 'show-loader' : 'hide-loader'"></div>
+  <div *ngIf="message" class="loader-message"> <span>{{message}}</span></div>
+</div>
