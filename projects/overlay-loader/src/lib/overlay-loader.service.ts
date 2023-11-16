@@ -12,7 +12,7 @@ export class LoaderService {
   constructor(private overlay: Overlay) {
   }
 
-  public loading(timeout: number = 60000 + 60000 + 60000 + 60000 + 60000 + 60000, message = null): void {
+  public loading(timeout: number = 7 * 60 * 1000, message: string | null = null): void {
     if (!this.overlayRef) {
       this.overlayRef = this.overlay.create({
         positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
@@ -20,7 +20,7 @@ export class LoaderService {
       });
 
       const spinnerPortal = new ComponentPortal(LoaderComponent);
-      const ref =this.overlayRef.attach(spinnerPortal);
+      const ref = this.overlayRef.attach(spinnerPortal);
       ref.instance.message = message;
 
       setTimeout(() => {
